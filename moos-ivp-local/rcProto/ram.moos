@@ -1,0 +1,124 @@
+// 
+// 
+
+ServerHost = localhost
+ServerPort = 9101
+
+Community  = ram
+MOOSTimeWarp = 1
+//LatOrigin  = 38.585740
+//LongOrigin = -76.131784
+LatOrigin  = 34.414888
+LongOrigin = -119.843005
+
+
+ 
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+// CONTROL
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB          @ NewConsole = false
+  Run = iMOOS2Serial    @ NewConsole = false
+  Run = pHelmIvP        @ NewConsole = false
+  Run = pMarinePID      @ NewConsole = false
+  Run = pNodeReporter   	@ NewConsole = false
+// add scoping
+ Run = uXMS            @ NewConsole = true ~ uXMS_iMOOS2Serial
+  Run = uXMS           @ NewConsole = true ~ uXMS_pNodeReporter 
+}
+
+
+// Config for scoping
+
+ProcessConfig = uXMS_iMOOS2Serial
+{
+	SOURCE = iMOOS2Serial
+}
+
+ProcessConfig = uXMS_pNodeReporter
+{
+	SOURCE = pNodeReporter
+} 
+
+//------------------------------------------
+// pMarinePID config block
+
+ProcessConfig = pMarinePID
+{
+  AppTick    = 5
+  CommsTick  = 5
+
+  verbose       = true
+  depth_control = false
+
+  // Yaw PID controller
+  yaw_pid_kp		 = 1.0
+  yaw_pid_kd		 = 0.0
+  yaw_pid_ki		 = 0.0
+  yaw_pid_integral_limit = 0.07
+
+  // Speed PID controller
+  speed_pid_kp		 = 1.0
+  speed_pid_kd		 = 0.0
+  speed_pid_ki		 = 0.0
+  speed_pid_integral_limit = 0.07
+
+  //MAXIMUMS
+  maxrudder    = 100
+  maxthrust    = 100
+
+  // Non-zero SPEED_FACTOR overrides SPEED_PID
+  // DESIRED_THRUST = DESIRED_SPEED * SPEED_FACTOR
+  speed_factor = 1
+}
+
+
+ProcessConfig = iMOOS2Serial
+{
+        AppTick   = 4
+        CommsTick = 4
+
+//        Port = /dev/ttyACM0 
+        Port = /dev/ttyS0
+        Speed = 57600
+
+	InputVariable = IVPHELM_CPU
+//        InputVariable = DESIRED_SPEED
+//        InputVariable = IVPHELM_CPU
+}
+
+
+ProcessConfig = pHelmIvP
+{
+  AppTick    = 5
+  CommsTick  = 5
+
+  Behaviors  = ram.bhv
+  Verbose    = true
+  Domain     = course:0:359:3600
+  Domain     = speed:0:250:100
+  //Domain     = depth:0:10:101
+}
+
+
+
+
+
+
+
+//------------------------------------------
+// pNodeReporter config block
+
+ProcessConfig = pNodeReporter
+{
+  AppTick         = 1
+  CommsTick     = 1
+
+  platform_type   = kayak
+  platform_length = 3
+}
+
+

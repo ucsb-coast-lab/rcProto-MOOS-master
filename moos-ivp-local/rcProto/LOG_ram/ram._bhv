@@ -1,0 +1,66 @@
+initialize   DRIVE  = false
+initialize MOOS_MANUAL_OVERIDE = false
+initialize NAV_HEADING = 0
+initialize NAV_SPEED = 0
+initialize HDG_GOAL = 0
+
+
+//----------------------------------------------
+Behavior = BHV_Waypoint
+{ 
+  name      = waypt_survey
+  pwt       = 100
+  condition = DRIVE = true
+  endflag = DRIVE = false
+  perpetual = true
+
+          lead = 8
+   lead_damper = 1
+         speed = 150  
+        radius = 4.0
+     nm_radius = 5.0
+        points = 6,-8:31,7:34,11:44,19:48,28:47,39:48,45:45,47:44,43:47,39:48,28:44,19:34,11:31,7:6,-8
+        repeat = 1
+}
+
+
+Behavior = BHV_Timer
+{
+  name = wait_timer
+  duration = 60
+  condition = DRIVE = false
+  endflag = DRIVE = true
+
+  perpetual = true
+}
+
+Behavior = BHV_Timer
+{
+  name = run_timer
+  duration = 600
+  condition = DRIVE = true
+  endflag = DRIVE = false
+  perpetual = true
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantSpeed
+{
+  name      = stop
+  pwt       = 100
+  condition = DRIVE = false 
+  perpetual = true
+
+  speed = 0 // out of 255
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantHeading
+{
+  name      = duenorth
+  pwt       = 100
+  perpetual = true
+  condition = DRIVE = false
+
+  heading = 0
+}

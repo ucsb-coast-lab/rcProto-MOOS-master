@@ -1,0 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_ram/LOG_ram.ylog
+%% FILE OPENED ON  Thu Jan  1 00:00:00 1970
+%% LOGSTART               1423013444.41
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+0.06780386 MOOS_DEBUG           pMarinePID           MAXTHRUST              = 255.000 
+0.963141   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: BehaviorError 
+1.073429   MOOS_DEBUG           pMarinePID           pMarinePID Control Is On 
+3.074711   MOOS_DEBUG           pMarinePID           Paused Due To Tardy NAV Input: THRUST=0 
+4.970159   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: clear 
+172.1976   MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+380.3357   MOOS_DEBUG           pMarinePID           Paused Due To Tardy NAV Input: THRUST=0 

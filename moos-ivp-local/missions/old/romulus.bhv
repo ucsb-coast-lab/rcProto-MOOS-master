@@ -1,0 +1,95 @@
+initialize   DEPLOY  = false
+initialize   SURVEY  = false
+initialize   LOITER  = true
+initialize   AVOID   = true
+
+
+
+set MODE = ACTIVE {
+  DEPLOY = true
+} INACTIVE
+
+set MODE = LOITERING {
+  MODE = ACTIVE
+  LOITER = true
+} 
+
+
+//----------------------------------------------
+Behavior = BHV_Loiter
+{
+  name      = loiter
+  pwt       = 100
+  condition = MODE==LOITERING
+  runflag   = VEHICLE_UNDERWAY = TRUE
+  endflag   = VEHICLE_UNDERWAY = FALSE
+
+   post_suffix = A
+         speed = 2.6
+     clockwise = false
+        radius = 10.0
+     nm_radius = 15.0
+//       polygon = radial:: x=-22586,y=-13314, radius=250, pts=8, snap=1, label=romulus_LOITER
+//       polygon = radial:: x=-26380,y=-2700, radius=500, pts=8, snap=1, label=romulus_LOITER // N2
+//       polygon = radial:: x=-21000,y=-4100, radius=500, pts=8, snap=1, label=romulus_LOITER // N3
+//       polygon = radial:: x=-20900,y=-12400, radius=500, pts=8, snap=1, label=romulus_LOITER // M3
+       polygon = radial:: x=-18000,y=-24300, radius=500, pts=8, snap=1, label=romulus_LOITER // S2
+  visual_hints = nextpt_color=white, nextpt_lcolor=khaki
+  visual_hints = edge_color=orange, vertex_color=white
+  visual_hints = edge_size=1, vertex_size=2
+}
+
+//----------------------------------------------
+Behavior = BHV_AvoidCollision
+{
+  name       = avdcollision_
+  pwt        = 200
+  condition  = AVOID=true
+  updates    = CONTACT_INFO
+  endflag    = CONTACT_RESOLVED = $[CONTACT]
+  templating = spawn
+
+             contact = to-be-set
+    on_no_contact_ok = true
+         extrapolate = true
+               decay = 30,60
+
+        pwt_outer_dist = 5000
+        pwt_inner_dist = 3000
+        completed_dist = 2000
+     min_util_cpa_dist = 1500  //collision
+     max_util_cpa_dist = 3000  //all_clear
+             pwt_grade = quadratic
+   bearing_line_config = white:0, green:0.5, yellow:0.75, red:0.9
+}
+
+
+//------------------------------------------------
+Behavior = BHV_Waypoint
+{ 
+  name      = waypt_survey_regular
+  pwt       = 100
+  condition = SURVEY = true
+  endflag   = SURVEY = false
+  perpetual = true
+
+          lead = 10
+         speed = 1.5   // meters per second
+        radius = 4.0
+     nm_radius = 10.0
+        points = -26649,-5987 : -25435,-5168
+	repeat = 1
+  
+}
+
+//------------------------------------------------
+Behavior = BHV_ConstantDepth
+{
+  name       = const_depth_regular
+  pwt        = 100
+  condition  = MODE==ACTIVE
+  duration   = no-time-limit
+
+       depth = 5
+
+}

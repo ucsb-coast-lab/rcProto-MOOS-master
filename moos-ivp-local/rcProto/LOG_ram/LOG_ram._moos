@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_ram/LOG_ram._moos
+%% FILE OPENED ON  Thu Jan  1 00:00:00 1970
+%% LOGSTART               1423013444.41
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//*******************************************************
+// RAM Helm
+// 
+// 
+
+ServerHost = localhost
+ServerPort = 9101
+
+Community  = ram
+//----  Next Line was commented and replaced with a command line overload ---- //
+//MOOSTimeWarp = 1    (default)
+MOOSTimeWarp = 1
+LatOrigin  = 38.585740
+LongOrigin = -76.131784
+
+
+ 
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+// CONTROL
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB          @ NewConsole = false
+  Run = iMOOS2Serial    @ NewConsole = false
+  Run = pHelmIvP        @ NewConsole = false
+  Run = pMarinePID      @ NewConsole = false
+  Run = iGPSd   	@ NewConsole = false
+  Run = pEchoVar   	@ NewConsole = false
+  Run = pLogger		@ NewConole = false
+  //Run = pNodeReporter   	@ NewConsole = false
+  //Run = pShare   	@ NewConsole = false
+  
+}
+
+//--------------------------------------------------
+// pLogger Configuration Block 
+
+ProcessConfig = pLogger
+{
+  AppTick       = 1
+  CommsTick     = 1
+
+  File          = LOG_ram
+  PATH          = ./
+  SyncLog       = true @ 0.2
+  AsyncLog      = true
+  FileTimeStamp = false
+
+  Log = IVPHELM_ITER
+
+  LogAuxSrc =false
+  WildCardLogging = false
+  LoggingDirectorySummaryFile = ~/.pLogger_%(VNAME)
+
+  CompressAlogs = false
+}
+
+
+
+
+//------------------------------------------
+// pMarinePID config block
+
+ProcessConfig = pMarinePID
+{
+  AppTick    = 1
+  CommsTick  = 1
+
+  verbose       = true
+  depth_control = false
+
+  // Yaw PID controller
+  yaw_pid_kp		 = 0.5
+  yaw_pid_kd		 = 0.0
+  yaw_pid_ki		 = 0.0
+  yaw_pid_integral_limit = 0.07
+
+  // Speed PID controller
+  speed_pid_kp		 = 1.0
+  speed_pid_kd		 = 0.0
+  speed_pid_ki		 = 0.0
+  speed_pid_integral_limit = 0.07
+
+  //MAXIMUMS
+  maxrudder    = 255
+  maxthrust    = 255
+
+  // Non-zero SPEED_FACTOR overrides SPEED_PID
+  // DESIRED_THRUST = DESIRED_SPEED * SPEED_FACTOR
+  speed_factor = 1
+}
+
+
+ProcessConfig = iMOOS2Serial
+{
+        AppTick   = 1
+        CommsTick = 1
+
+//        Port = /dev/ttyACM0 
+        Port = /dev/ttyO2  
+        Speed = 57600 // Can't get 115200
+
+//        InputVariable = DESIRED_SPEED
+//        InputVariable = IVPHELM_CPU
+}
+
+
+ProcessConfig = pHelmIvP
+{
+  AppTick    = 1
+  CommsTick  = 1
+
+  Behaviors  = ram.bhv
+  Verbose    = true
+  Domain     = course:0:359:360
+  Domain     = speed:0:250:25
+  //Domain     = depth:0:10:101
+}
+
+
+
+
+
+ProcessConfig = iGPSd
+{ 
+	AppTick= 1
+	CommsTick = 1
+
+	GPSD_HOSTNAME = /dev/ttyO1
+	GPSD_PORT = 2947
+	
+	// Debugging verbosity
+	VERBOSITY = 0
+}
+
+ProcessConfig = pEchoVar                                        
+{                                                               
+  AppTick   = 1                                                 
+  CommsTick = 1                                                 
+
+                                                                 
+  Echo    = GPS_LATITUDE_DEG       ->  NAV_LAT
+  Echo    = GPS_LONGITUDE_DEG       ->  NAV_LONG                         
+  Echo    = GPS_GROUND_SPEED_MPS   ->  NAV_SPEED                     
+// Use this if no 9dof IMU
+  Echo    = GPS_HEADING_DEG   ->  NAV_HEADING      
+
+}
+
+
+//------------------------------------------
+// pNodeReporter config block
+
+ProcessConfig = pNodeReporter
+{
+  AppTick         = 1
+  CommsTick     = 1
+
+  platform_type   = kayak
+  platform_length = 3
+}
+
+
+
+

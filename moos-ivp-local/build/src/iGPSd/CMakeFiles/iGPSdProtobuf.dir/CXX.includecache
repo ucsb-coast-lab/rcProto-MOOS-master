@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/debian/moos-ivp-local/src/iGPSd/build/iGPSd_FixData.pb.cc
+iGPSd_FixData.pb.h
+/home/debian/moos-ivp-local/src/iGPSd/build/iGPSd_FixData.pb.h
+algorithm
+-
+google/protobuf/stubs/once.h
+-
+google/protobuf/io/coded_stream.h
+-
+google/protobuf/wire_format_lite_inl.h
+-
+
+/home/debian/moos-ivp-local/src/iGPSd/build/iGPSd_FixData.pb.h
+string
+-
+google/protobuf/stubs/common.h
+-
+google/protobuf/generated_message_util.h
+-
+google/protobuf/repeated_field.h
+-
+google/protobuf/extension_set.h
+-
+

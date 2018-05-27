@@ -1,0 +1,36 @@
+
+ServerHost = localhost
+ServerPort = 9200
+Community  = shoreside
+WebServerPort = 9009
+
+MOOSTimeWarp = 1
+LatOrigin  = 38.593496
+LongOrigin = -76.128700
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+// CONTROL
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB           @ NewConsole = false
+  Run = iAIS             @ NewConsole = false
+
+}
+
+
+//------------------------------------------
+// iAIS config block
+
+ProcessConfig = iAIS
+{
+  AppTick = 4
+  CommsTick = 4
+
+  ais_host = "192.168.0.4"
+  ais_port = 9009
+
+}
+

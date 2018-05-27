@@ -1,0 +1,57 @@
+initialize   DRIVE  = false
+initialize MOOS_MANUAL_OVERIDE = false
+initialize NAV_HEADING = 0
+initialize NAV_SPEED = 0
+initialize HDG_GOAL = 0
+
+//----------------------------------------------
+Behavior = BHV_ConstantSpeed
+{
+  name      = forward
+  pwt       = 100
+  condition = DRIVE = true
+  perpetual = true
+
+  speed = 150 // out of 255
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantSpeed
+{
+  name      = stop
+  pwt       = 100
+  condition = DRIVE = false 
+  perpetual = true
+
+  speed = 0 // out of 255
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantHeading
+{
+  name      = duenorth
+  pwt       = 100
+  perpetual = true
+
+  heading = 0
+}
+
+Behavior = BHV_Timer
+{
+  name = wait_timer
+  duration = 5
+  condition = DRIVE = false
+  endflag = DRIVE = true
+
+  perpetual = true
+}
+
+Behavior = BHV_Timer
+{
+  name = run_timer
+  duration = 5
+  condition = DRIVE = true
+  endflag = DRIVE = false
+  perpetual = true
+}
+
