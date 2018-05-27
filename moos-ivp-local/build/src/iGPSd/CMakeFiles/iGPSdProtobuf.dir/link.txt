@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC  -g -O2   -shared -Wl,-soname,libiGPSdProtobuf.so.0 -o ../../../lib/libiGPSdProtobuf.so.0 CMakeFiles/iGPSdProtobuf.dir/build/iGPSd_FixData.pb.cc.o -L/home/debian/moos-ivp/lib -L/usr/local/lib -L/home/debian/moos-ivp/MOOS/MOOSGeodesy/libMOOSGeodesy/include/../../lib 
