@@ -1,0 +1,7 @@
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/CMakeFiles/edit_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/CMakeFiles/rebuild_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/CMakeFiles/edit_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/CMakeFiles/rebuild_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/pOdometry/CMakeFiles/edit_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/pOdometry/CMakeFiles/rebuild_cache.dir
+/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/pOdometry/CMakeFiles/pOdometry.dir
