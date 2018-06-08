@@ -83,7 +83,7 @@ ProcessConfig = iMOOS2Serial
 
 //        Port = /dev/ttyACM0 
         Port = /dev/ttyS0
-        Speed = 57600
+        Speed = 115200
 
 	InputVariable = IVPHELM_CPU
 //        InputVariable = DESIRED_SPEED

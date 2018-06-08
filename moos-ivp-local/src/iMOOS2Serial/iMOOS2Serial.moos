@@ -9,7 +9,7 @@ ProcessConfig = iMOOS2Serial
 	CommsTick = 4
 
 	Port = /dev/ttyS0
-	Speed = 57600
+	Speed = 115200
 
 	InputVariable = IVPHELM_CPU
 }

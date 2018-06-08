@@ -19,7 +19,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../src/CMakeLists.txt"
   "../src/iMOOS2Serial/CMakeLists.txt"
   "../src/lib_anrp_util/CMakeLists.txt"
-  "../src/pOdometry/CMakeLists.txt"
   "/usr/share/cmake-3.5/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeCommonLanguageInclude.cmake"
@@ -52,12 +51,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/lib_anrp_util/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/iMOOS2Serial/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/pOdometry/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/lib_anrp_util/CMakeFiles/anrp_util.dir/DependInfo.cmake"
   "src/iMOOS2Serial/CMakeFiles/iMOOS2Serial.dir/DependInfo.cmake"
-  "src/pOdometry/CMakeFiles/pOdometry.dir/DependInfo.cmake"
   )

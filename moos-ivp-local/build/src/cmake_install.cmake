@@ -36,7 +36,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/lib_anrp_util/cmake_install.cmake")
   include("/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/iMOOS2Serial/cmake_install.cmake")
-  include("/home/coast/rcProto-MOOS-master/moos-ivp-local/build/src/pOdometry/cmake_install.cmake")
 
 endif()
 

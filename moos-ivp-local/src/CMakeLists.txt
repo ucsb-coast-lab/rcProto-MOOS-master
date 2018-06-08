@@ -18,7 +18,7 @@ link_directories(${MOOSGeodesy_LIBRARY_PATH})
 #============================================================================
 ADD_SUBDIRECTORY(lib_anrp_util)
 ADD_SUBDIRECTORY(iMOOS2Serial)
-ADD_SUBDIRECTORY(pOdometry)
+#ADD_SUBDIRECTORY(pOdometry)
 #ADD_SUBDIRECTORY(iGPSd)
 #ADD_SUBDIRECTORY(pState)
 

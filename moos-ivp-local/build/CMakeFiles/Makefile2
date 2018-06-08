@@ -65,21 +65,18 @@ CMAKE_BINARY_DIR = /home/coast/rcProto-MOOS-master/moos-ivp-local/build
 # Convenience name for "all" pass in the directory.
 src/all: src/lib_anrp_util/all
 src/all: src/iMOOS2Serial/all
-src/all: src/pOdometry/all
 
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
 src/clean: src/lib_anrp_util/clean
 src/clean: src/iMOOS2Serial/clean
-src/clean: src/pOdometry/clean
 
 .PHONY : src/clean
 
 # Convenience name for "preinstall" pass in the directory.
 src/preinstall: src/lib_anrp_util/preinstall
 src/preinstall: src/iMOOS2Serial/preinstall
-src/preinstall: src/pOdometry/preinstall
 
 .PHONY : src/preinstall
 
@@ -190,61 +187,6 @@ src/iMOOS2Serial/CMakeFiles/iMOOS2Serial.dir/clean:
 
 # clean rule for target.
 clean: src/iMOOS2Serial/CMakeFiles/iMOOS2Serial.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory src/pOdometry
-
-# Convenience name for "all" pass in the directory.
-src/pOdometry/all: src/pOdometry/CMakeFiles/pOdometry.dir/all
-
-.PHONY : src/pOdometry/all
-
-# Convenience name for "clean" pass in the directory.
-src/pOdometry/clean: src/pOdometry/CMakeFiles/pOdometry.dir/clean
-
-.PHONY : src/pOdometry/clean
-
-# Convenience name for "preinstall" pass in the directory.
-src/pOdometry/preinstall:
-
-.PHONY : src/pOdometry/preinstall
-
-#=============================================================================
-# Target rules for target src/pOdometry/CMakeFiles/pOdometry.dir
-
-# All Build rule for target.
-src/pOdometry/CMakeFiles/pOdometry.dir/all:
-	$(MAKE) -f src/pOdometry/CMakeFiles/pOdometry.dir/build.make src/pOdometry/CMakeFiles/pOdometry.dir/depend
-	$(MAKE) -f src/pOdometry/CMakeFiles/pOdometry.dir/build.make src/pOdometry/CMakeFiles/pOdometry.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/coast/rcProto-MOOS-master/moos-ivp-local/build/CMakeFiles --progress-num=37,38,39,40 "Built target pOdometry"
-.PHONY : src/pOdometry/CMakeFiles/pOdometry.dir/all
-
-# Include target in all.
-all: src/pOdometry/CMakeFiles/pOdometry.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-src/pOdometry/CMakeFiles/pOdometry.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/coast/rcProto-MOOS-master/moos-ivp-local/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 src/pOdometry/CMakeFiles/pOdometry.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/coast/rcProto-MOOS-master/moos-ivp-local/build/CMakeFiles 0
-.PHONY : src/pOdometry/CMakeFiles/pOdometry.dir/rule
-
-# Convenience name for target.
-pOdometry: src/pOdometry/CMakeFiles/pOdometry.dir/rule
-
-.PHONY : pOdometry
-
-# clean rule for target.
-src/pOdometry/CMakeFiles/pOdometry.dir/clean:
-	$(MAKE) -f src/pOdometry/CMakeFiles/pOdometry.dir/build.make src/pOdometry/CMakeFiles/pOdometry.dir/clean
-.PHONY : src/pOdometry/CMakeFiles/pOdometry.dir/clean
-
-# clean rule for target.
-clean: src/pOdometry/CMakeFiles/pOdometry.dir/clean
 
 .PHONY : clean
 

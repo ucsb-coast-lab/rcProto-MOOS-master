@@ -62,18 +62,20 @@ void CSerMOOS::Thread()
       
       // Look for good message identifiers
       char *p = strchr(mem.c(), '#');
-//      printf(p); // This prints the inbound message
+      printf(p); // This prints the inbound message
+
       if(p == NULL) {
-	//p = strchr(mem.c(), '!');
-	//if(p == NULL) {
-	//printf("Got an invalid message...\n");
-	continue;
-      	//}
+	p = strchr(mem.c(), '!');
+	if(p == NULL) {
+	  port->AllQueueFlush();
+	  printf("Got an invalid message...\n");
+	  continue;
+      	}
       }
       
       if(cb) {
 	cb(up, p);
       }
-    }
-  }
-}
+    }  // end of while(port ->FindCharIndex ....)
+  } // end of while(running)
+} // end of Thread() function
